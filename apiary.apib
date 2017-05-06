@@ -20,13 +20,23 @@ A board represents a dashboard composed of bookmarks.
 
 
 
-### Retrieve a single board and its bookmarks [GET /boards/{id}]
+### Retrieve a single board [GET /boards/{id}]
 
 + Parameters
     - id: `123` (number, required) - The ID of the desired board
 
 + Response 200 (application/json)
     + Attributes (BoardWithId)
+
+
+
+### Retrieve the bookmarks for a single board [GET /boards/{id}/bookmarks]
+
++ Parameters
+    - id: `123` (number, required) - The ID of the desired board
+
++ Response 200 (application/json)
+    + Attributes
         - bookmarks (array[BookmarkWithId])
 
 
