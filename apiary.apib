@@ -1,0 +1,213 @@
+FORMAT: 1A
+
+# GrampsBoard
+The GrampsBoard API allows the creation and editing of bookmark boards that can be shared.
+
+## Boards [/boards]
+A board represents a dashboard composed of bookmarks.
+
+### Retrieve a list of boards [GET /boards{?page,count}]
+
++ Parameters
+    - page: `12` (number, optional) - The page number to fetch
+        - Default: 1
+    - count: `10` (number, optional) - The number of items to fetch
+        - Default: 20
+
++ Response 200 (application/json)
+    + Attributes
+        - boards (array[BoardWithId])
+
+
+
+### Retrieve a single board and its bookmarks [GET /boards/{id}]
+
++ Parameters
+    - id: `123` (number, required) - The ID of the desired board
+
++ Response 200 (application/json)
+    + Attributes (BoardWithId)
+        - bookmarks (array[BookmarkWithId])
+
+
+
+### Create a new board [POST]
+Creating a new board requires passing a session token
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
+    + Attributes (Board)
+
++ Response 201 (application/json)
+    + Attributes (BoardWithId)
+
+
+
+### Delete an owned board [DELETE /boards/{id}]
+Deleting one's boards requires passing a session token
+
++ Parameters
+    - id: `12` (number, required) - The unique ID of the board to be deleted
+
++ Request
+    + Headers
+
+            Authorization: token xyz
+
++ Response 204
+
+
+
+### Modify an owned board [PATCH /boards/{id}]
+Updating one's boards requires passing a session token. This endpoint only requires passing the data that changes.
+
++ Parameters
+    - id: `12` (number, required) - The unique ID of the board to be updated
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
+    + Attributes (Board)
+
++ Response 200 (application/json)
+    + Attributes (BoardWithId)
+
+
+
+### Create a new bookmark under a board [POST /boards/{id}/bookmarks]
+Creating a bookmark requires passing a token that proves you are the owner for the board
+
++ Parameters
+    - id: `12` (number, required) - The unique ID of the board for which to create a bookmark
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
+    + Attributes (Bookmark)
+
++ Response 201 (application/json)
+    + Attributes (BookmarkWithId)
+
+
+
+
+
+## Bookmarks [/bookmarks]
+A bookmark represents a link (url + title) inside a dashboard.
+
+### Delete a bookmark [DELETE /bookmarks/{id}]
+Deleting a bookmark requires passing a token that proves you are the owner of the board that owns that bookmark
+
++ Parameters
+    - id: `4954` (number, required) - The unique ID of the bookmark to delete
+
++ Request
+    + Headers
+
+            Authorization: token xyz
+
++ Response 204
+
+
+
+### Modify a bookmark [PATCH /bookmarks/{id}]
+Modifying a bookmark requires an access token proving you are the owner of the board for that bookmark
+
++ Parameters
+    - id: `4954` (number, required) - The unique ID of the bookmark to update
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
+    + Attributes (Bookmark)
+
++ Response 200 (application/json)
+    + Attributes (BookmarkWithId)
+
+
+
+
+
+## Authentication [/auth]
+
+### Create a new user (signup) [POST /auth/users]
++ Request (application/json)
+    + Attributes (AuthData)
+
++ Response 201 (application/json)
+    + Attributes (UserWithId)
+
+
+
+### Create a new session (login) [POST /auth/sessions]
++ Request (application/json)
+    + Attributes (AuthData)
+
++ Response 201 (application/json)
+    + Attributes (Session)
+
+
+
+### Delete a session (logout) [DELETE /auth/sessions]
+Requesting this endpoint will delete the session associated with the token in the `Authorization` header.
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
++ Response 204
+
+
+
+
+
+# Data Structures
+
+## Timestamps (object)
+- createdAt: `2015-01-20T09:48:32.066Z` (string) - The creation date
+- updatedAt: `2017-05-04T14:29:42.490Z` (string) - The last update date
+
+## Board (object)
+- title: `Board for grampa` (string) - The name of the board
+- description: `This is the board for my grandparents` (string) - The description of the board
+
+## BoardWithId (object)
+- id: `123` (number) - The unique ID of the board
+- ownerId: `5` (number, required) - The unique ID of the user who owns the board
+- Include Board
+- Include Timestamps
+
+## Bookmark (object)
+- title: `Youtube kitten videos` (string, required) - The title of the bookmark
+- url: `https://www.youtube.com/kittenz` (string, required) - The URL of the bookmark
+
+## BookmarkWithId (object)
+- id: `55` (number) - The unique ID of the bookmark
+- boardId: `15` (number, required) - The unique ID of the board that the bookmark belongs to
+- Include Bookmark
+- Include Timestamps
+
+## AuthData (object)
+- email: `hunter@thompson.com` (string) - The email that will be used as a login username
+- password: `Hunter2` (string) - The desired password for the new user
+
+## User (object)
+- email: `hunter@thompson.com` (string) - The email of the user
+
+## UserWithId (object)
+- id: `123` (number) - The unique ID of the user
+- Include User
+- Include Timestamps
+
+## Session (object)
+- token: `uep52qo8wfyh97b24fjafjewi9bb0r24` (string) - The session token
