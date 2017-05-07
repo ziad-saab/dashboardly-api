@@ -29,6 +29,7 @@ To work on this project:
 1. Fork this repo
 2. Clone your own fork
 3. Run `npm install` or `yarn`
+4. Run `npm start` to start developing with Nodemon
 
 When you want to start working on a new feature:
 
