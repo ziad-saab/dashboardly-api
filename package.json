@@ -4,7 +4,7 @@
   "description": "ExpressJS and MySQL-based API for creating shareable boards of bookmarks.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "nodemon": "^1.11.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
