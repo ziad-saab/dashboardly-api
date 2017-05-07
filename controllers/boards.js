@@ -20,7 +20,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });
 
-  boardsController.post('/', onlyLoggedIn(dataLoader), (req, res) => {
+  boardsController.post('/', onlyLoggedIn, (req, res) => {
     dataLoader.createBoard({
       ownerId: req.user.id,
       title: req.body.title,
@@ -30,7 +30,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });
 
-  boardsController.patch('/:id', onlyLoggedIn(dataLoader), (req, res) => {
+  boardsController.patch('/:id', onlyLoggedIn, (req, res) => {
     dataLoader.boardBelongsToUser(req.params.id, req.user.id)
     .then(() => {
       return dataLoader.updateBoard(req.params.id, {
@@ -42,7 +42,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });
 
-  boardsController.delete('/:id', onlyLoggedIn(dataLoader), (req, res) => {
+  boardsController.delete('/:id', onlyLoggedIn, (req, res) => {
     dataLoader.boardBelongsToUser(req.params.id, req.user.id)
     .then(() => {
       return dataLoader.deleteBoard(req.params.id);
@@ -51,7 +51,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });
 
-  boardsController.post('/:id/bookmarks', onlyLoggedIn(dataLoader), (req, res) => {
+  boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
     // TODO: this is up to you to implement :)
   });
 
