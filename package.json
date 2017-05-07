@@ -16,9 +16,11 @@
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "knex": "^0.13.0",
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
-    "promise-mysql": "^3.0.1"
+    "promise-mysql": "^3.0.1",
+    "validate.js": "^0.11.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
@@ -34,7 +36,9 @@
       "no-underscore-dangle": 0,
       "no-shadow": 0,
       "no-console": 0,
-      "no-plusplus": 0
+      "no-plusplus": 0,
+      "object-shorthand": 0,
+      "arrow-body-style": 0
     }
   }
 }
