@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS grampsboard;
+DROP DATABASE IF EXISTS dashboardly;
 
-CREATE DATABASE grampsboard;
+CREATE DATABASE dashboardly;
 
-USE grampsboard;
+USE dashboardly;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,

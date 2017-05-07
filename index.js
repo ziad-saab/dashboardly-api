@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const checkLoginToken = require('./lib/check-login-token.js');
 
 // Data loader
-const GrampsDataLoader = require('./lib/gramps.js');
+const DashboardlyDataLoader = require('./lib/dashboardly.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
@@ -18,9 +18,9 @@ const bookmarksController = require('./controllers/bookmarks.js');
 // Database / data loader initialization
 const connection = mysql.createPool({
   user: 'root',
-  database: 'grampsboard'
+  database: 'dashboardly'
 });
-const dataLoader = new GrampsDataLoader(connection);
+const dataLoader = new DashboardlyDataLoader(connection);
 
 
 // Express initialization

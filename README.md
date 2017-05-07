@@ -1,5 +1,5 @@
-# Grampsboard API
-The [contract for this API](apiary.apib) is hosted on [apiary.io](http://docs.grampsboard.apiary.io/#reference).
+# Dashboardly API
+The [contract for this API](apiary.apib) is hosted on [apiary.io](http://docs.dashboardly.apiary.io/#).
 
 ## Supporting libraries
 This project uses the following libraries:

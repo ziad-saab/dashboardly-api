@@ -1,5 +1,5 @@
 {
-  "name": "grampsboard-api",
+  "name": "dashboardly-api",
   "version": "1.0.0",
   "description": "ExpressJS and MySQL-based API for creating shareable boards of bookmarks.",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ziad-saab/grampsboard-api.git"
+    "url": "git+https://github.com/ziad-saab/dashboardly-api.git"
   },
   "keywords": [],
   "author": "Ziad Saab <ziad.saab@gmail.com>",
   "license": "ISC",
-  "homepage": "https://github.com/ziad-saab/grampsboard-api#readme",
+  "homepage": "https://github.com/ziad-saab/dashboardly-api#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "bcrypt-as-promised": "^1.1.0",
