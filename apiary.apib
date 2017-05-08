@@ -179,6 +179,18 @@ Requesting this endpoint will delete the session associated with the token in th
 
 
 
+### Retrieve current user [GET /me]
+Requesting this endpoint with an Authorization token will return the user that this token belongs to.
+
++ Request
+    + Headers
+    
+            Authorization: token xyz
+
++ Response 200 (application/json)
+    + Attributes (UserWithId)
+
+
 
 
 # Data Structures
@@ -218,6 +230,7 @@ Requesting this endpoint will delete the session associated with the token in th
 ## UserWithId (object)
 - id: `123` (number) - The unique ID of the user
 - Include User
+- avatarUrl: `https://gravatar.com/troll.jpg` (string) - The profile pic of the user
 - Include Timestamps
 
 ## Session (object)
