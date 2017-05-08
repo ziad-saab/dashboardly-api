@@ -15,6 +15,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(400).json(err));
   });
 
+
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
     dataLoader.createTokenFromCredentials(
@@ -25,6 +26,7 @@ module.exports = (dataLoader) => {
     .catch(err => res.status(401).json(err));
   });
 
+
   // Delete a session (logout)
   authController.delete('/sessions', onlyLoggedIn, (req, res) => {
     if (req.sessionToken === req.body.token) {
@@ -34,6 +36,13 @@ module.exports = (dataLoader) => {
     } else {
       res.status(401).json({ error: 'Invalid session token' });
     }
+  });
+
+
+  // Retrieve current user
+  authController.get('/me', onlyLoggedIn, (req, res) => {
+    // TODO: this is up to you to implement :)
+    res.status(500).json({ error: 'not implemented' });
   });
 
   return authController;
