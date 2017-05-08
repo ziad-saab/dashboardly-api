@@ -60,12 +60,21 @@ This project is linted by `eslint` and the rules are specified in `package.json`
 ### Editorconfig
 This project has a `.editorconfig` file that should be picked up by your IDE and enforce two spaces per indent. If it's not picked up by your IDE, make sure to configure your IDE for two spaces per indent. Otherwise ESLint will warn you.
 
+### Developing
 To work on this project:
 
 1. Fork this repo
 2. Clone your own fork
 3. Run `npm install` or `yarn`
 4. Run `npm start` to start developing with Nodemon
+
+**NOTE**: Make sure you have a Node version of at least 7. You can use NVM to install an appropriate Node version.
+**NOTE 2**: Make sure you have MySQL Server 5.6+. Failing to do so, you will not be able to create all the tables with `CURRENT_TIMESTAMP` defaults. If you are on Cloud9, this can be accomplished with the following commands:
+
+```bash
+sudo apt-get update
+sudo apt-get install mysql-server-core-5.6 mysql-server-5.6
+```
 
 When you want to start working on a new feature:
 
