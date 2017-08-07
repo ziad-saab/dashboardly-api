@@ -20,7 +20,7 @@ const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
   database: 'dashboardly',
-  password: 'admin'
+  password: 'Admin123.'
 });
 const dataLoader = new DashboardlyDataLoader(connection);
 
