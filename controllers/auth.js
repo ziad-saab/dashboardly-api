@@ -43,10 +43,9 @@ module.exports = (dataLoader) => {
       dataLoader.deleteToken(req.body.token)
         .then(() => res.status(204).end())
         .catch(err => res.status(400).json(err));
-    }
-/*    } else {
+    } else {
       res.status(401).json({ error: 'Invalid session token' });
-    }*/
+    }
   });
 
 
