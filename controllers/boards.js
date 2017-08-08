@@ -71,8 +71,7 @@ module.exports = (dataLoader) => {
   });
 
   // Create a new bookmark under a board
-  //onlyLoggedIn to beused later as middleware
-  boardsController.post('/:id/bookmarks', (req, res) => {
+  boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
     console.log(JSON.stringify(req.body));
     dataLoader.createBookmark({
       boardId: Number(req.params.id),

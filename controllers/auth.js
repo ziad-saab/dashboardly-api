@@ -21,7 +21,12 @@ module.exports = (dataLoader) => {
     //taking the input email and password as parameters
     //createTokenFromCredentials returns the new sessionToken on success
     dataLoader.createTokenFromCredentials(req.body.email, req.body.password)
-    .then(token => res.status(201).json({ token: token })) //Sends a JSON response composed of a stringified version of the specified data
+    .then(token => res.status(201).json({ token: token }))
+    //Above Sends a JSON response composed of a stringified version of the specified data
+    //And the req.headers gets something like token sdfkjsdnvskdjf
+    //This can used like below. See check-login-token.js
+    //const token = req.headers.authorization.split(' ')[1];
+    .then(()=>{console.log(req.headers)})
     .catch(err => res.status(401).json(err));
   });
 
