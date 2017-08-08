@@ -15,16 +15,27 @@ module.exports = (dataLoader) => {
   });
 
   // Modify a bookmark
-  bookmarksController.patch('/:id', onlyLoggedIn, (req, res) => {
-    console.log(req.body.title);
-    res.status(500).json({ error: 'not implemented' });
+  bookmarksController.patch('/:id', (req, res) => {
+    var myBookmark = {
+      boardId: req.body.boardId,
+      title: req.body.title,
+      url: req.body.url
+    };
+    dataLoader.updateBookmark(req.params.id, myBookmark)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(err => res.status(400).json(err));
   });
 
 
   // Delete a bookmark
-  bookmarksController.delete('/:id', onlyLoggedIn, (req, res) => {
-    // TODO: this is up to you to implement :)
-    res.status(500).json({ error: 'not implemented' });
+  bookmarksController.delete('/:id', (req, res) => {
+    dataLoader.deleteBookmark(req.params.id)
+      .then((data) => {
+        console.log(data);
+    })
+      .catch(err => res.status(400).json(err));
   });
 
   return bookmarksController;
