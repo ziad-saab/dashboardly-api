@@ -66,13 +66,25 @@ module.exports = (dataLoader) => {
   // Retrieve all the bookmarks for a single board
   boardsController.get('/:id/bookmarks', (req, res) => {
     // TODO: this is up to you to implement :)
-    res.status(500).json({ error: 'not implemented' });
+    dataLoader.getAllBookmarksForBoard(req.params.id)
+      .then(data => res.json(data))
+      .catch(error => res.status(400).json(err));
   });
 
   // Create a new bookmark under a board
-  boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
+  //onlyLoggedIn to beused later as middleware
+  boardsController.post('/:id/bookmarks', (req, res) => {
     // TODO: this is up to you to implement :)
-    res.status(500).json({ error: 'not implemented' });
+    console.log(JSON.stringify(req.body));
+    dataLoader.createBookmark({
+      boardId: Number(req.params.id),
+      title: req.body.title,
+      url: req.body.url,
+      description: req.body.description
+    })
+      .then(data => res.status(201).json(data))
+      .catch(error => res.status(400).json(error));
+    //res.status(500).json({ error: 'not implemented' });
   });
 
   return boardsController;
