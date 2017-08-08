@@ -65,7 +65,6 @@ module.exports = (dataLoader) => {
 
   // Retrieve all the bookmarks for a single board
   boardsController.get('/:id/bookmarks', (req, res) => {
-    // TODO: this is up to you to implement :)
     dataLoader.getAllBookmarksForBoard(req.params.id)
       .then(data => res.json(data))
       .catch(error => res.status(400).json(err));
@@ -74,7 +73,6 @@ module.exports = (dataLoader) => {
   // Create a new bookmark under a board
   //onlyLoggedIn to beused later as middleware
   boardsController.post('/:id/bookmarks', (req, res) => {
-    // TODO: this is up to you to implement :)
     console.log(JSON.stringify(req.body));
     dataLoader.createBookmark({
       boardId: Number(req.params.id),

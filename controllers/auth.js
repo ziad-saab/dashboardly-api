@@ -18,11 +18,10 @@ module.exports = (dataLoader) => {
 
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
-    dataLoader.createTokenFromCredentials(
-      req.body.email,
-      req.body.password
-    )
-    .then(token => res.status(201).json({ token: token }))
+    //taking the input email and password as parameters
+    //createTokenFromCredentials returns the new sessionToken on success
+    dataLoader.createTokenFromCredentials(req.body.email, req.body.password)
+    .then(token => res.status(201).json({ token: token })) //Sends a JSON response composed of a stringified version of the specified data
     .catch(err => res.status(401).json(err));
   });
 

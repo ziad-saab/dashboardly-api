@@ -19,7 +19,8 @@ module.exports = (dataLoader) => {
     var myBookmark = {
       boardId: req.body.boardId,
       title: req.body.title,
-      url: req.body.url
+      url: req.body.url,
+      description: req.body.description
     };
     dataLoader.updateBookmark(req.params.id, myBookmark)
       .then((data) => {
