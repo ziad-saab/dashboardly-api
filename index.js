@@ -4,6 +4,7 @@ const mysql = require('promise-mysql');
 // Express middleware
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+//const cookieParser = require('cookie-parser');
 const checkLoginToken = require('./lib/check-login-token.js');
 
 // Data loader
@@ -29,7 +30,9 @@ const dataLoader = new DashboardlyDataLoader(connection);
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+//app.use(cookieParser);
 app.use(checkLoginToken(dataLoader));
+
 
 app.use('/auth', authController(dataLoader));
 app.use('/boards', boardsController(dataLoader));
