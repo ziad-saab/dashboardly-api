@@ -26,8 +26,9 @@ module.exports = (dataLoader) => {
 
   // Create a new board
   boardsController.post('/', onlyLoggedIn, (req, res) => {
+    console.log("Req user= ", req.user);
     dataLoader.createBoard({
-      ownerId: req.user.id,
+      ownerId: req.user.users_id,
       title: req.body.title,
       description: req.body.description
     })
@@ -39,22 +40,22 @@ module.exports = (dataLoader) => {
   // Modify an owned board
   boardsController.patch('/:id', onlyLoggedIn, (req, res) => {
     // First check if the board to be PATCHed belongs to the user making the request
-    dataLoader.boardBelongsToUser(req.params.id, req.user.id)
+    dataLoader.boardBelongsToUser(req.params.id, req.user.users_id)
     .then(() => {
       return dataLoader.updateBoard(req.params.id, {
         title: req.body.title,
         description: req.body.description
       });
     })
-    .then(data => res.json(data))
-    .catch(err => res.status(400).json(err));
+    .then(data => res.status(201).json(data))
+    .catch(err => res.status(400).json({error: err.message}));
   });
 
 
   // Delete an owned board
   boardsController.delete('/:id', onlyLoggedIn, (req, res) => {
     // First check if the board to be DELETEd belongs to the user making the request
-    dataLoader.boardBelongsToUser(req.params.id, req.user.id)
+    dataLoader.boardBelongsToUser(req.params.id, req.user.users_id)
     .then(() => {
       return dataLoader.deleteBoard(req.params.id);
     })
@@ -74,13 +75,13 @@ module.exports = (dataLoader) => {
   boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
     console.log(JSON.stringify(req.body));
     dataLoader.createBookmark({
-      boardId: Number(req.params.id),
+      boardId: req.params.id,
       title: req.body.title,
       url: req.body.url,
       description: req.body.description
     })
       .then(data => res.status(201).json(data))
-      .catch(error => res.status(400).json(error));
+      .catch(error => res.status(400).json({error: error.message}));
     //res.status(500).json({ error: 'not implemented' });
   });
 
