@@ -47,7 +47,7 @@ module.exports = (dataLoader) => {
         description: req.body.description
       });
     })
-    .then(data => res.json(data))
+    .then(data => res.status(201).json(data))
     .catch(err => res.status(400).json({error: err.message}));
   });
 
@@ -75,13 +75,13 @@ module.exports = (dataLoader) => {
   boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
     console.log(JSON.stringify(req.body));
     dataLoader.createBookmark({
-      boardId: Number(req.params.id),
+      boardId: req.params.id,
       title: req.body.title,
       url: req.body.url,
       description: req.body.description
     })
       .then(data => res.status(201).json(data))
-      .catch(error => res.status(400).json(error));
+      .catch(error => res.status(400).json({error: error.message}));
     //res.status(500).json({ error: 'not implemented' });
   });
 
