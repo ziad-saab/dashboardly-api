@@ -26,8 +26,9 @@ module.exports = (dataLoader) => {
 
   // Create a new board
   boardsController.post('/', onlyLoggedIn, (req, res) => {
+    console.log("Req user= ", req.user);
     dataLoader.createBoard({
-      ownerId: req.user.id,
+      ownerId: req.user.users_id,
       title: req.body.title,
       description: req.body.description
     })
@@ -39,7 +40,7 @@ module.exports = (dataLoader) => {
   // Modify an owned board
   boardsController.patch('/:id', onlyLoggedIn, (req, res) => {
     // First check if the board to be PATCHed belongs to the user making the request
-    dataLoader.boardBelongsToUser(req.params.id, req.user.id)
+    dataLoader.boardBelongsToUser(req.params.id, req.user.users_id)
     .then(() => {
       return dataLoader.updateBoard(req.params.id, {
         title: req.body.title,
@@ -47,14 +48,14 @@ module.exports = (dataLoader) => {
       });
     })
     .then(data => res.json(data))
-    .catch(err => res.status(400).json(err));
+    .catch(err => res.status(400).json({error: err.message}));
   });
 
 
   // Delete an owned board
   boardsController.delete('/:id', onlyLoggedIn, (req, res) => {
     // First check if the board to be DELETEd belongs to the user making the request
-    dataLoader.boardBelongsToUser(req.params.id, req.user.id)
+    dataLoader.boardBelongsToUser(req.params.id, req.user.users_id)
     .then(() => {
       return dataLoader.deleteBoard(req.params.id);
     })

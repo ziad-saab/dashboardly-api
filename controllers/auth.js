@@ -13,7 +13,7 @@ module.exports = (dataLoader) => {
       avatarUrl: req.body.avatarUrl
     })
     .then(user => res.status(201).json(user))
-    .catch(err => res.status(400).json(err));
+    .catch(err => res.status(401).json({error: err.message}));
   });
 
 
@@ -27,12 +27,14 @@ module.exports = (dataLoader) => {
       return token;
     })
     .then(token => res.status(201).json({ token: token }))
-    .catch(err => res.status(401).json(err));
+    //.catch(err => res.send(err.message));
+    .catch(err => res.status(401).json({error: err.message}));
   });
 
 
   // Delete a session (logout)
   authController.delete('/sessions', onlyLoggedIn, (req, res) => {
+    console.log("req.sessionToken= ", req.sessionToken);
     if (req.sessionToken === req.body.token) {
       dataLoader.deleteToken(req.body.token)
         .then(() => res.status(204).end())
@@ -46,9 +48,10 @@ module.exports = (dataLoader) => {
   // Retrieve current user
   authController.get('/me', onlyLoggedIn, (req, res) => {
     // TODO: this is up to you to implement :)
-    console.log("Headers ",req.headers);
-    console.log("Authorization = ",req.headers.authorization.split(' ')[1]);
-    dataLoader.getUserFromSession(req.headers.authorization.split(' ')[1])
+    //console.log("Headers ",req.headers);
+    //console.log("Authorization = ",req.headers.authorization.split(' ')[1]);
+    //dataLoader.getUserFromSession(req.headers.authorization.split(' ')[1])
+    dataLoader.getUserFromSession(req.sessionToken)
       .then(user => {
         console.log("user =", user);
         return user;
