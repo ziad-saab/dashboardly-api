@@ -15,7 +15,7 @@ module.exports = (dataLoader) => {
   });
 
   // Modify a bookmark
-  bookmarksController.patch('/:id', (req, res) => {
+  bookmarksController.patch('/:id', onlyLoggedIn, (req, res) => {
     var myBookmark = {
       boardId: req.body.boardId,
       title: req.body.title,
@@ -31,7 +31,7 @@ module.exports = (dataLoader) => {
 
 
   // Delete a bookmark
-  bookmarksController.delete('/:id', (req, res) => {
+  bookmarksController.delete('/:id', onlyLoggedIn, (req, res) => {
     dataLoader.deleteBookmark(req.params.id)
       .then((data) => {
         console.log(data);
