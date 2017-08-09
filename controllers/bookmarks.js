@@ -8,10 +8,7 @@ module.exports = (dataLoader) => {
 
   bookmarksController.get('/:id', (req, res) => {
     dataLoader.getAllBookmarksForBoard(req.params.id)
-      .then((data) => {
-        console.log('This is my result: ', data);
-        res.send('Request processed!');
-      });
+      .then(data => res.json(data))
   });
 
   // Modify a bookmark
