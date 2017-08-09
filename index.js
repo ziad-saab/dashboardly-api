@@ -4,7 +4,7 @@ const mysql = require('promise-mysql');
 // Express middleware
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
+//const cookieParser = require('cookie-parser');
 const checkLoginToken = require('./lib/check-login-token.js');
 
 // Data loader
