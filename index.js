@@ -21,7 +21,7 @@ const bookmarksController = require('./controllers/bookmarks.js');
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'Admin123.',
+  password: 'admin',
   database: 'dashboardly'
 });
 const dataLoader = new DashboardlyDataLoader(connection);
@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE,PATCH");
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Headers", "Content-Type, authorization");
   next();
 });
 

@@ -21,6 +21,7 @@ module.exports = (dataLoader) => {
         createdAt: user[0].createdAt,
         updatedAt: user[0].updatedAt
       };
+      console.log('my object', objUser);
       //res.header('Access-Control-Allow-Origin', '*');
       //res.header('Access-Control-Request-Headers', 'Content-Type, Authorization');
       res.status(201).json(objUser);
