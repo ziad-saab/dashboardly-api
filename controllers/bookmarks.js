@@ -18,7 +18,8 @@ module.exports = (dataLoader) => {
       boardId: req.params.id,
       title: req.body.title,
       url: req.body.url,
-      description: req.body.description
+      description: req.body.description,
+      user: req.user
     };
     dataLoader.updateBookmark(req.params.id, myBookmark)
       .then(data => {
@@ -36,18 +37,6 @@ module.exports = (dataLoader) => {
       })
       .catch(err => res.status(400).json({error: err.message}));
   });
-
-  /*{
-    "id": 55,
-    "boardId": 15,
-    "title": "Youtube kitten videos",
-    "url": "https://www.youtube.com/kittenz",
-    "description": "This link will take you to the best place in the universe",
-    "createdAt": "2015-01-20T09:48:32.066Z",
-    "updatedAt": "2017-05-04T14:29:42.490Z"
-  }*/
-
-
 
 
   // Delete a bookmark

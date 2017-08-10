@@ -31,7 +31,7 @@ const dataLoader = new DashboardlyDataLoader(connection);
 const app = express();
 app.use(cors({
   allowedOrigins: [
-    'https://c43f4a46.ngrok.io/', 'http://localhost:3000'
+    'https://80c06665.ngrok.io', 'http://localhost:3000', 'http://decodemtl-ct-tsirrus.c9users.io:8080', '*'
   ],
 
 }));
