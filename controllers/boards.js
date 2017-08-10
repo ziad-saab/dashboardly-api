@@ -78,12 +78,14 @@ module.exports = (dataLoader) => {
 
   // Create a new bookmark under a board
   boardsController.post('/:id/bookmarks', onlyLoggedIn, (req, res) => {
+    console.log(JSON.stringify(req.params));
     console.log(JSON.stringify(req.body));
     dataLoader.createBookmark({
       boardId: req.params.id,
       title: req.body.title,
       url: req.body.url,
-      description: req.body.description
+      description: req.body.description,
+      user: req.user
     })
       .then(data => res.status(201).json(data))
       .catch(error => res.status(400).json({error: error.message}));
