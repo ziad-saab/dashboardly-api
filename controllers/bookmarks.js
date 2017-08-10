@@ -13,13 +13,14 @@ module.exports = (dataLoader) => {
     console.log(req.body.title);
     console.log(req.body.url);
     console.log(req.body.description);
+    console.log(req.user[0]);
 
     var myBookmark = {
       boardId: req.params.id,
       title: req.body.title,
       url: req.body.url,
       description: req.body.description,
-      user: req.user
+      user: req.user[0]
     };
     dataLoader.updateBookmark(req.params.id, myBookmark)
       .then(data => {
