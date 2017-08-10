@@ -1,0 +1,274 @@
+[33mcommit 55b25d063011977ae277b6a5b1bcf383e2ae6f62[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Thu Aug 10 16:19:42 2017 -0400
+
+    Bugs fixed
+
+[33mcommit a5edcb626270f1f6f3f6820b098408869e491e78[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Thu Aug 10 13:15:11 2017 -0400
+
+    Syntax fixes
+
+[33mcommit 5bba17b8fb583f5c3b958f5a54688759215498a1[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Thu Aug 10 12:34:08 2017 -0400
+
+    Added json response for authentications
+
+[33mcommit 5cc5d1ebee3d74d6bb6c5962d32013370ccd33fb[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 22:54:43 2017 -0400
+
+    boards url responses fixed
+
+[33mcommit a886d279ce5a06760a1f02f54c763e6d62bb1857[m
+Merge: 7bbebef 8e788a8
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 20:16:49 2017 -0400
+
+    Merge pull request #12 from DecodeCATS/sadnan_testing
+    
+    Sadnan testing with fixed createBookmark
+
+[33mcommit 8e788a8e5df6a6b565eabc0d93e8e9d1ef8efbf1[m
+Merge: f46dcc2 7bbebef
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 20:08:19 2017 -0400
+
+    Merge branch 'develop' into sadnan_testing
+
+[33mcommit 7bbebefea4c00420d4b93fe5bd56452e510a4fea[m
+Merge: 595e023 98c3a61
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 20:04:20 2017 -0400
+
+    Merge pull request #11 from DecodeCATS/antonio_testing
+    
+    Added express-course middleware and change response with headers
+
+[33mcommit f46dcc28dd7fae929ca0bfe3ecc5dd510baf8be1[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 20:03:05 2017 -0400
+
+    Fixed createBookmark function
+
+[33mcommit 98c3a61018d083f1dd366608aafbcf825a6cc3ec[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Wed Aug 9 19:55:27 2017 -0400
+
+    Added express-course middleware and change response with headers
+
+[33mcommit 4c27a8d23aaad317ae597f44447393666be8b897[m
+Merge: 9cf478d 595e023
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 17:33:18 2017 -0400
+
+    Merge pull request #10 from DecodeCATS/develop
+    
+    added antonios stuff
+
+[33mcommit 595e023bebb61e4f5b76bb8d856ca2c4bab7b920[m
+Merge: ab8fa7b db076b4
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 17:32:07 2017 -0400
+
+    Merge pull request #9 from DecodeCATS/antonio_testing
+    
+    Antonio testing: getUserFromBoard added
+
+[33mcommit db076b42bbb7ff247eb991704e61344503bff368[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Wed Aug 9 17:30:26 2017 -0400
+
+    function getUserFromBoard created
+
+[33mcommit b4dfeefec91d4454bc34fd0a0870a673a9a29517[m
+Merge: ab8fa7b 9cf478d
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 17:11:13 2017 -0400
+
+    Merge pull request #8 from DecodeCATS/sadnan_testing
+    
+    Tests 1-8 done
+
+[33mcommit 9cf478dd6fe20fba5e4a747ab4adf5a03daaa015[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 17:06:33 2017 -0400
+
+    small changes
+
+[33mcommit 599692efbe41e7413e42f3c7c22e91532aba6aa4[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 16:26:24 2017 -0400
+
+    1-8 tests completed
+
+[33mcommit d02dc44ac4b8c367ff33d3b145153ee0959aaac3[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 15:10:19 2017 -0400
+
+    fixed getAllBookmarks()
+
+[33mcommit ab8fa7b9559daa072456ee0912326a249f7d27bf[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Wed Aug 9 14:57:52 2017 -0400
+
+    Small change
+
+[33mcommit 602b3617548277b5eae8fbf13ffe8a6b22d652ef[m
+Merge: 6e61c45 1747a47
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Wed Aug 9 13:41:28 2017 -0400
+
+    Merge pull request #7 from DecodeCATS/authentication_features
+    
+    feature to get user from session token
+
+[33mcommit 1747a47c5d7cf345179302edb1c2cdddf19b29e0[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 13:38:59 2017 -0400
+
+    Small changes
+
+[33mcommit 7e1b7a9eb811e3ffbd49b9684bf204dfefd929db[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Wed Aug 9 13:32:38 2017 -0400
+
+    user info from session being returned
+
+[33mcommit 6e61c457a38a49d7b60e30a863b53c9b9bfab1f7[m
+Merge: b2a7599 bf77bd1
+Author: Antonio Quintero Felizzola <antonio.qfel@gmail.com>
+Date:   Wed Aug 9 12:21:24 2017 -0400
+
+    Merge pull request #6 from DecodeCATS/bookmark_owner
+    
+    function bookmarkBelongsToUser() tested and working
+
+[33mcommit bf77bd105bc0312556551345122737cefc992c4b[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Wed Aug 9 12:13:55 2017 -0400
+
+    function bookmarkBelongsToUser() tested and working
+
+[33mcommit b2a75996f27f93770dee1f6f7d038a1ea6c323b3[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 19:43:26 2017 -0400
+
+    Fixed Sybtax
+
+[33mcommit 406e97091f0f3798e14b0a977b454a25f905c825[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 19:39:57 2017 -0400
+
+    Fixing login header token
+
+[33mcommit 1f9bb8628891d06d226a3ee48e7585bab823b96b[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 18:02:05 2017 -0400
+
+    Added comments
+
+[33mcommit 0d2a2f17e7cdcfdf9d4c1cb9d2c95c7317f5039a[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 16:46:56 2017 -0400
+
+    Validators Updated and comments added to files
+
+[33mcommit 76677c2c24d72518f478a8109b29652e79b5d6b0[m
+Merge: 3a6d009 9d1985b
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Tue Aug 8 12:55:22 2017 -0400
+
+    Merge pull request #3 from DecodeCATS/board_features
+    
+    Board features to create & retrieve bookmarks for a board
+
+[33mcommit 9d1985bec91a162404cba368e995b5910eeff684[m
+Merge: 4012187 3a6d009
+Author: Sadnan Saquif <SSaquif@users.noreply.github.com>
+Date:   Tue Aug 8 12:54:57 2017 -0400
+
+    Merge branch 'develop' into board_features
+
+[33mcommit 4012187d05e4befcc416004faa76791913f9a2a0[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 12:49:49 2017 -0400
+
+    Create & Retrieve Bookmarks implemented
+
+[33mcommit 3a6d0093bd95eb17a750ded6fa491b442df0b18f[m
+Merge: 5866aef 11f1aa7
+Author: Antonio Quintero Felizzola <antonio.qfel@gmail.com>
+Date:   Tue Aug 8 12:48:10 2017 -0400
+
+    Merge pull request #2 from DecodeCATS/bookmark_features
+    
+    update and delete bookmark implemented
+
+[33mcommit 11f1aa7e83a22c6ec60ca0b1fe77779b2278d2eb[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Tue Aug 8 12:40:12 2017 -0400
+
+    update and delete bookmark implemented
+
+[33mcommit fed45caad7b89915659d2c794daa54a948877c4c[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Tue Aug 8 11:59:39 2017 -0400
+
+    Altered tables users and bookmarks
+
+[33mcommit 5866aefcafcbacbbd962ec7542b8dac914ec20d9[m
+Author: nebulaUnicornis <antonio.qfel@gmail.com>
+Date:   Tue Aug 8 10:34:00 2017 -0400
+
+    First test with postman
+
+[33mcommit 9e7a04457d74a6597dd8ef287ab8eda28b56e38d[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Mon Aug 7 15:36:30 2017 -0400
+
+    database alterd with foreign keys and new data
+
+[33mcommit a5c02506fbc9e73194630ebd4b5d70dac0bf41ab[m
+Author: SSaquif <ssaquif@gmail.com>
+Date:   Mon Aug 7 13:35:28 2017 -0400
+
+    Initial Changes to database
+
+[33mcommit f8f60b1df09ff2a9557a5c49515ad730aea04a75[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Wed May 10 15:38:57 2017 -0400
+
+    initialize filtered keys with empty object
+
+[33mcommit 280674cef42e551b928cca4197ecc26cae2cdb1a[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Mon May 8 09:17:23 2017 -0400
+
+    added instructions about node and mysql versions
+
+[33mcommit 4be52b8a77c51a4cb147b46785d3ecf1ff977650[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Sun May 7 22:29:56 2017 -0400
+
+    Transferring API Description file from Apiary.io
+
+[33mcommit 935943e3a80667bf72df8ed449d1d0c9b459d50e[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Sun May 7 21:13:30 2017 -0400
+
+    cleanup and add missing controller code
+
+[33mcommit 03ac6c6de77c651306228e126fac70166c37117f[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Sun May 7 21:04:49 2017 -0400
+
+    Transferring API Description file from Apiary.io
+
+[33mcommit f033366cfb89c85dd626e40302b70add47aa2e67[m
+Author: Ziad Saab <ziad.saab@gmail.com>
+Date:   Sun May 7 21:02:17 2017 -0400
+
+    Transferring API Description file from Apiary
