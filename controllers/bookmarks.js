@@ -42,8 +42,16 @@ module.exports = (dataLoader) => {
 
   // Delete a bookmark
   bookmarksController.delete('/:id', onlyLoggedIn, (req, res) => {
-    dataLoader.deleteBookmark(req.params.id)
-      .then(data => res.status(204).end())
+
+    var bookmarkData = {
+      bookmarkId: req.params.id,
+      userId: req.user[0].users_id
+    }
+
+    dataLoader.deleteBookmark(bookmarkData)
+      .then(data => {
+        res.status(204).end()
+      })
       .catch(err => res.status(400).json({error: err.message}));
   });
 
