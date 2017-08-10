@@ -12,10 +12,23 @@ module.exports = (dataLoader) => {
       password: req.body.password,
       avatarUrl: req.body.avatarUrl
     })
-    .then(user => res.status(201).json(user))
+    .then(user => {
+      console.log(user[0]);
+      var objUser ={
+        id: user[0].id,
+        email: user[0].email,
+        avatarUrl: user[0].avatarUrl,
+        createdAt: user[0].createdAt,
+        updatedAt: user[0].updatedAt
+      };
+      console.log('my object', objUser);
+      //res.header('Access-Control-Allow-Origin', '*');
+      //res.header('Access-Control-Request-Headers', 'Content-Type, Authorization');
+      res.status(201).json(objUser);
+
+    })
     .catch(err => res.status(401).json({error: err.message}));
   });
-
 
   // Create a new session (login)
   authController.post('/sessions', (req, res) => {
@@ -26,7 +39,9 @@ module.exports = (dataLoader) => {
     .then(token => {
       return token;
     })
-    .then(token => res.status(201).json({ token: token }))
+    .then(token => {
+      res.status(201).json({ token: token })
+    })
     //.catch(err => res.send(err.message));
     .catch(err => res.status(401).json({error: err.message}));
   });
@@ -53,10 +68,17 @@ module.exports = (dataLoader) => {
     //dataLoader.getUserFromSession(req.headers.authorization.split(' ')[1])
     dataLoader.getUserFromSession(req.sessionToken)
       .then(user => {
-        console.log("user =", user);
-        return user;
+        console.log(user[0]);
+        var objUser = {
+          id: user[0].users_id,
+          email: user[0].users_email,
+          avatarUrl: user[0].users_avatarUrl,
+          createdAt: user[0].users_createdAt,
+          updatedAt: user[0].users_updatedAt
+        };
+        console.log((objUser));
+        res.status(201).json(objUser);
       })
-      .then(user => res.status(201).json(user));
   });
 
   return authController;
