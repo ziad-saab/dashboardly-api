@@ -15,16 +15,26 @@ module.exports = (dataLoader) => {
       var objBoards = {
         boards: data
       };
-      res.header('Access-Control-Allow-Origin', '*').json(objBoards)
+      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoards);
     })
-    .catch(err => res.status(400).json(err));
+    .catch(err => res.status(400).status(201).json(err));
   });
 
 
   // Retrieve a single board
   boardsController.get('/:id', (req, res) => {
     dataLoader.getSingleBoard(req.params.id)
-    .then(data => res.json(data))
+    .then(data => {
+      var objBoard = {
+        id: data[0].id,
+        ownerId: data[0].ownerId,
+        title: data[0].title,
+        description: data[0].description,
+        createdAt: data[0].createdAt,
+        updatedAt: data[0].updatedAt
+      };
+      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+    })
     .catch(err => res.status(400).json(err));
   });
 
@@ -37,7 +47,17 @@ module.exports = (dataLoader) => {
       title: req.body.title,
       description: req.body.description
     })
-    .then(data => res.status(201).json(data))
+    .then(data => {
+      var objBoard = {
+        id: data[0].id,
+        ownerId: data[0].ownerId,
+        title: data[0].title,
+        description: data[0].description,
+        createdAt: data[0].createdAt,
+        updatedAt: data[0].updatedAt
+      };
+      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+    })
     .catch(err => res.status(400).json(err));
   });
 
@@ -52,7 +72,17 @@ module.exports = (dataLoader) => {
         description: req.body.description
       });
     })
-    .then(data => res.status(201).json(data))
+    .then(data => {
+      var objBoard = {
+        id: data[0].id,
+        ownerId: data[0].ownerId,
+        title: data[0].title,
+        description: data[0].description,
+        createdAt: data[0].createdAt,
+        updatedAt: data[0].updatedAt
+      };
+      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+    })
     .catch(err => res.status(400).json({error: err.message}));
   });
 
@@ -72,7 +102,12 @@ module.exports = (dataLoader) => {
   // Retrieve all the bookmarks for a single board
   boardsController.get('/:id/bookmarks', (req, res) => {
     dataLoader.getAllBookmarksForBoard(req.params.id)
-      .then(data => res.json(data))
+      .then(data => {
+        var objBookmarks ={
+          bookmarks: data
+        }
+        res.header('Access-Control-Allow-Origin', '*').status(201).json(objBookmarks);
+      })
       .catch(error => res.status(400).json(err));
   });
 
@@ -87,9 +122,19 @@ module.exports = (dataLoader) => {
       description: req.body.description,
       user: req.user
     })
-      .then(data => res.status(201).json(data))
+      .then(data => {
+        var objBookmark ={
+          id: data[0].id,
+          boardId: data[0].boardId,
+          title: data[0].title,
+          url: data[0].url,
+          description: data[0].description,
+          createdAt: data[0].createdAt,
+          updatedAt: data[0].updatedAt
+        }
+        res.header('Access-Control-Allow-Origin', '*').status(201).json(objBookmark);
+      })
       .catch(error => res.status(400).json({error: error.message}));
-    //res.status(500).json({ error: 'not implemented' });
   });
 
   return boardsController;

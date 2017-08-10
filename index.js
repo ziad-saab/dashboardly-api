@@ -21,7 +21,7 @@ const bookmarksController = require('./controllers/bookmarks.js');
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'admin',
+  password: 'Admin123.',
   database: 'dashboardly'
 });
 const dataLoader = new DashboardlyDataLoader(connection);
@@ -31,7 +31,7 @@ const dataLoader = new DashboardlyDataLoader(connection);
 const app = express();
 app.use(cors({
   allowedOrigins: [
-    'https://73cfec32.ngrok.io', 'http://localhost:3000'
+    'https://c43f4a46.ngrok.io/', 'http://localhost:3000'
   ],
 
 }));
