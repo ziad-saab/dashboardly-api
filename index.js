@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('express-cors');
 const mysql = require('promise-mysql');
 
 // Express middleware
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+//const cookieParser = require('cookie-parser');
 const checkLoginToken = require('./lib/check-login-token.js');
 
 // Data loader
@@ -27,9 +29,27 @@ const dataLoader = new DashboardlyDataLoader(connection);
 
 // Express initialization
 const app = express();
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE,PATCH");
+  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Headers", "Content-Type, authorization");
+  next();
+});
+
+
+app.use(cors({
+/*  allowedOrigins: [
+    'https://80c06665.ngrok.io', 'http://localhost:3000', 'http://decodemtl-ct-tsirrus.c9users.io:8080', '*'
+  ],*/
+
+}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+//app.use(cookieParser);
 app.use(checkLoginToken(dataLoader));
+
 
 app.use('/auth', authController(dataLoader));
 app.use('/boards', boardsController(dataLoader));

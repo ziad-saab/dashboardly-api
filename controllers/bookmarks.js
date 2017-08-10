@@ -6,36 +6,45 @@ const onlyLoggedIn = require('../lib/only-logged-in');
 module.exports = (dataLoader) => {
   const bookmarksController = express.Router();
 
-  bookmarksController.get('/:id', (req, res) => {
-    dataLoader.getAllBookmarksForBoard(req.params.id)
-      .then((data) => {
-        console.log('This is my result: ', data);
-        res.send('Request processed!');
-      });
-  });
-
   // Modify a bookmark
-  bookmarksController.patch('/:id', (req, res) => {
+  bookmarksController.patch('/:id', onlyLoggedIn, (req, res) => {
+    console.log("I am here in bookmarks/id");
+    console.log(req.params.id);
+    console.log(req.body.title);
+    console.log(req.body.url);
+    console.log(req.body.description);
+    console.log(req.user[0]);
+
     var myBookmark = {
-      boardId: req.body.boardId,
+      boardId: req.params.id,
       title: req.body.title,
-      url: req.body.url
+      url: req.body.url,
+      description: req.body.description,
+      user: req.user[0]
     };
     dataLoader.updateBookmark(req.params.id, myBookmark)
-      .then((data) => {
+      .then(data => {
         console.log(data);
+        var objBookmark ={
+          id: data[0].id,
+          boardId: data[0].boardId,
+          title: data[0].title,
+          url: data[0].url,
+          description: data[0].description,
+          createdAt: data[0].createdAt,
+          updatedAt: data[0].updatedAt
+        };
+        res.status(201).json(objBookmark);
       })
-      .catch(err => res.status(400).json(err));
+      .catch(err => res.status(400).json({error: err.message}));
   });
 
 
   // Delete a bookmark
-  bookmarksController.delete('/:id', (req, res) => {
+  bookmarksController.delete('/:id', onlyLoggedIn, (req, res) => {
     dataLoader.deleteBookmark(req.params.id)
-      .then((data) => {
-        console.log(data);
-    })
-      .catch(err => res.status(400).json(err));
+      .then(data => res.status(204).end())
+      .catch(err => res.status(400).json({error: err.message}));
   });
 
   return bookmarksController;
