@@ -21,9 +21,9 @@ module.exports = (dataLoader) => {
         createdAt: user[0].createdAt,
         updatedAt: user[0].updatedAt
       };
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Request-Headers', 'Content-Type', 'Authorization');
-      res.header('Access-Control-Allow-Headers', 'Content-Type', 'Authorization').status(201).json(objUser);
+      //res.header('Access-Control-Allow-Origin', '*');
+      //res.header('Access-Control-Request-Headers', 'Content-Type, Authorization');
+      res.status(201).json(objUser);
 
     })
     .catch(err => res.status(401).json({error: err.message}));
@@ -39,8 +39,7 @@ module.exports = (dataLoader) => {
       return token;
     })
     .then(token => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'Content-Type', 'Authorization', 'authorization').status(201).json({ token: token })
+      res.status(201).json({ token: token })
     })
     //.catch(err => res.send(err.message));
     .catch(err => res.status(401).json({error: err.message}));
@@ -77,10 +76,7 @@ module.exports = (dataLoader) => {
           updatedAt: user[0].users_updatedAt
         };
         console.log((objUser));
-
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-        res.setHeader('Access-Control-Request-Headers', 'Content-Type, Authorization');
-        res.header('Access-Control-Allow-Origin', '*').status(201).json(objUser);
+        res.status(201).json(objUser);
       })
   });
 

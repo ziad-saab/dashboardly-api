@@ -33,7 +33,7 @@ module.exports = (dataLoader) => {
           createdAt: data[0].createdAt,
           updatedAt: data[0].updatedAt
         };
-        res.header('Access-Control-Allow-Origin', '*').status(201).json(objBookmark);
+        res.status(201).json(objBookmark);
       })
       .catch(err => res.status(400).json({error: err.message}));
   });

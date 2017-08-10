@@ -15,7 +15,7 @@ module.exports = (dataLoader) => {
       var objBoards = {
         boards: data
       };
-      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoards);
+      res.status(201).json(objBoards);
     })
     .catch(err => res.status(400).status(201).json(err));
   });
@@ -33,7 +33,7 @@ module.exports = (dataLoader) => {
         createdAt: data[0].createdAt,
         updatedAt: data[0].updatedAt
       };
-      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+      res.status(201).json(objBoard);
     })
     .catch(err => res.status(400).json(err));
   });
@@ -56,7 +56,7 @@ module.exports = (dataLoader) => {
         createdAt: data[0].createdAt,
         updatedAt: data[0].updatedAt
       };
-      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+      res.status(201).json(objBoard);
     })
     .catch(err => res.status(400).json(err));
   });
@@ -81,7 +81,7 @@ module.exports = (dataLoader) => {
         createdAt: data[0].createdAt,
         updatedAt: data[0].updatedAt
       };
-      res.header('Access-Control-Allow-Origin', '*').status(201).json(objBoard);
+      res.status(201).json(objBoard);
     })
     .catch(err => res.status(400).json({error: err.message}));
   });
@@ -106,7 +106,7 @@ module.exports = (dataLoader) => {
         var objBookmarks ={
           bookmarks: data
         }
-        res.header('Access-Control-Allow-Origin', '*').status(201).json(objBookmarks);
+        res.status(201).json(objBookmarks);
       })
       .catch(error => res.status(400).json(err));
   });
@@ -132,7 +132,7 @@ module.exports = (dataLoader) => {
           createdAt: data[0].createdAt,
           updatedAt: data[0].updatedAt
         }
-        res.header('Access-Control-Allow-Origin', '*').status(201).json(objBookmark);
+        res.status(201).json(objBookmark);
       })
       .catch(error => res.status(400).json({error: error.message}));
   });
