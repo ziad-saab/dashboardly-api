@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('express-cors');
 const mysql = require('promise-mysql');
 
 // Express middleware
@@ -20,7 +21,7 @@ const bookmarksController = require('./controllers/bookmarks.js');
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'Admin123.',
+  password: 'admin',
   database: 'dashboardly'
 });
 const dataLoader = new DashboardlyDataLoader(connection);
@@ -28,6 +29,12 @@ const dataLoader = new DashboardlyDataLoader(connection);
 
 // Express initialization
 const app = express();
+app.use(cors({
+  allowedOrigins: [
+    'https://73cfec32.ngrok.io', 'http://localhost:3000'
+  ],
+
+}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 //app.use(cookieParser);

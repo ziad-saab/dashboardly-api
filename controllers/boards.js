@@ -11,7 +11,12 @@ module.exports = (dataLoader) => {
       page: req.query.page,
       limit: req.query.count
     })
-    .then(data => res.json(data))
+    .then(data => {
+      var objBoards = {
+        boards: data
+      };
+      res.header('Access-Control-Allow-Origin', '*').json(objBoards)
+    })
     .catch(err => res.status(400).json(err));
   });
 
