@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-cors": "0.0.3",
+    "js-md5": "^0.6.0",
     "knex": "^0.13.0",
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
