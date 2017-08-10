@@ -1,4 +1,5 @@
 const express = require('express');
+var md5 = require('js-md5');
 
 const onlyLoggedIn = require('../lib/only-logged-in');
 
@@ -7,10 +8,14 @@ module.exports = (dataLoader) => {
 
   // Create a new user (signup)
   authController.post('/users', (req, res) => {
+
+    // Hash email
+    var hash = md5(req.body.email);
+
     dataLoader.createUser({
       email: req.body.email,
       password: req.body.password,
-      avatarUrl: req.body.avatarUrl
+      avatarUrl: `https://www.gravatar.com/avatar/${hash}?s=60`
     })
     .then(user => {
       console.log(user[0]);
