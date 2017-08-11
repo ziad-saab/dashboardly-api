@@ -4,11 +4,14 @@
   "description": "ExpressJS and MySQL-based API for creating shareable boards of bookmarks.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ziad-saab/dashboardly-api.git"
+  },
+  "engines": {
+    "node": "8.2.1"
   },
   "keywords": [],
   "author": "Ziad Saab <ziad.saab@gmail.com>",
@@ -21,6 +24,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-cors": "0.0.3",
+    "js-md5": "^0.6.0",
     "knex": "^0.13.0",
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
