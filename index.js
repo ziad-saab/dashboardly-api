@@ -19,11 +19,12 @@ const bookmarksController = require('./controllers/bookmarks.js');
 
 // Database / data loader initialization
 const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'Admin123.',
-  database: 'dashboardly'
+  host: process.env.CLEARDB_HOST,
+  user: process.env.CLEARDB_USER,
+  password: process.env.CLEARDB_PASSWORD,
+  database: process.env.CLEARDB_DATABASE
 });
+
 const dataLoader = new DashboardlyDataLoader(connection);
 
 
@@ -43,8 +44,8 @@ app.use(cors({
 /*  allowedOrigins: [
     'https://80c06665.ngrok.io', 'http://localhost:3000', 'http://decodemtl-ct-tsirrus.c9users.io:8080', '*'
   ],*/
-
 }));
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 //app.use(cookieParser);
