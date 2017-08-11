@@ -30,6 +30,7 @@ const dataLoader = new DashboardlyDataLoader(connection);
 // Express initialization
 const app = express();
 
+// Every time server sends a response, server allows access control in the headers
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE,PATCH");

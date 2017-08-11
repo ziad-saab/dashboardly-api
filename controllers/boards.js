@@ -31,7 +31,8 @@ module.exports = (dataLoader) => {
         title: data[0].title,
         description: data[0].description,
         createdAt: data[0].createdAt,
-        updatedAt: data[0].updatedAt
+        updatedAt: data[0].updatedAt,
+        isListed: data[0].isListed
       };
       res.status(201).json(objBoard);
     })
@@ -46,7 +47,8 @@ module.exports = (dataLoader) => {
     dataLoader.createBoard({
       ownerId: req.user[0].users_id,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      isListed: req.body.isListed
     })
     .then(data => {
       var objBoard = {
@@ -55,7 +57,8 @@ module.exports = (dataLoader) => {
         title: data[0].title,
         description: data[0].description,
         createdAt: data[0].createdAt,
-        updatedAt: data[0].updatedAt
+        updatedAt: data[0].updatedAt,
+        isListed: data[0].isListed
       };
       res.status(201).json(objBoard);
     })
@@ -70,18 +73,22 @@ module.exports = (dataLoader) => {
     .then(() => {
       return dataLoader.updateBoard(req.params.id, {
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        isListed: req.body.isListed
       });
     })
     .then(data => {
+
       var objBoard = {
         id: data[0].id,
         ownerId: data[0].ownerId,
         title: data[0].title,
         description: data[0].description,
         createdAt: data[0].createdAt,
-        updatedAt: data[0].updatedAt
+        updatedAt: data[0].updatedAt,
+        isListed: data[0].isListed
       };
+
       res.status(201).json(objBoard);
     })
     .catch(err => res.status(400).json({error: err.message}));
